@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <title>Вхід</title>
+  <link rel="stylesheet" href="{% static 'accounts/forms.css' %}">
+</head>
+<body>
+  <div class="card">
+    <h1>Вхід</h1>
+
+    <form method="post" class="form">
+      {% csrf_token %}
+
+      {{ form.non_field_errors }}
+
+      <label>Username</label>
+      {{ form.username }}
+      {{ form.username.errors }}
+
+      <label>Password</label>
+      {{ form.password }}
+      {{ form.password.errors }}
+
+      <button type="submit">Увійти</button>
+    </form>
+
+    <p class="links">
+      Нема акаунта? <a href="{% url 'register' %}">Реєстрація</a><br>
+      Адмін? <a href="{% url 'admin_register' %}">Реєстрація адміністратора</a>
+    </p>
+  </div>
+</body>
+</html>
